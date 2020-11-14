@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+char adde<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,22 @@
 <body>
 
     <div class="container">
+        <br><br><br>
+
+        <h4>Calorie Goal</h4>
+        <br>
+        <div class="row">
+            <div class="col-md-9 offset-1">
+                <div class="progress">
+                    <div class="progress-bar" role='progressbar' style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="0">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row">
@@ -79,19 +95,26 @@
     let table = document.getElementById("table");
     let carbs = 0, protein=0, fats=0, calories=0;
 
-    console.log(table)
-    for(let i=1; i<table.rows.length-1; i++){
-        console.log(table.rows[i].cells[1].innerHTML)
+    
+    for(let i=2; i<table.rows.length-1; i++){
+
         carbs += parseFloat(table.rows[i].cells[1].innerHTML);
+        carbs = Math.round(carbs)
         protein += parseFloat(table.rows[i].cells[2].innerHTML);
+        protein = Math.round(carbs)
         fats += parseFloat(table.rows[i].cells[3].innerHTML);
+        fats = Math.round(carbs)
         calories += parseFloat(table.rows[i].cells[4].innerHTML);
+        calories = Math.round(carbs)
     }
-    console.log(fats)
+
     document.getElementById('totalCarbs').innerHTML = carbs;
     document.getElementById('totalProteins').innerHTML = protein;
     document.getElementById('totalFats').innerHTML = fats;
     document.getElementById('totalCalories').innerHTML = calories;
+
+    let calPer = (calories/2000) * 100;
+    document.getElementsByClassName('progress-bar')[0].setAttribute('style', 'width: ' + calPer + '%')
 
 </script>
 </html>
